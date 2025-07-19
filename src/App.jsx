@@ -19,7 +19,7 @@ import Login from "./routes/login/login";
 import { Ativos } from "./routes/telas/ativos";
 import { AuthGuard } from "@/components/authGuard";
 import { Carousel } from "./routes/telas/carousel";
-import  DashBoardGerencial  from "./routes/realTime/page";
+import ResumosPage from "./routes/resumos/page";
 function App() {
     const msalInstance = new PublicClientApplication(config);
 
@@ -47,7 +47,7 @@ const router = createBrowserRouter(
             { path: "ativos", element: <Ativos /> },
             { path: "inventory", element: <h1 className="title">Inventory</h1> },
             { path: "settings", element: <h1 className="title">Settings</h1> },
-            { path: "resumos", element: <DashBoardGerencial/>},
+            { path: "resumos", element: <ResumosPage /> },
           ]
         }
       ]

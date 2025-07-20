@@ -360,7 +360,7 @@ export const CalculationCard = ({categoria, dataFiltro}) => {
             </div>
             )}
 
-            <div className='flex flex-col  mt-6 bg-card-bg relative '> 
+            <div className='flex flex-col  mt-6 bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] relative '> 
                 <div className='flex flex-wrap items-center justify-between px-4 '>
                     <div className='flex flex-wrap gap-2 my-2 items-start'>
                         {Object.entries(ufAgrupadas).map(([ufBase, subUfs]) => {
@@ -435,7 +435,7 @@ export const CalculationCard = ({categoria, dataFiltro}) => {
                     </div>
                 </div>
 
-                <div className="flex flex-wrap md:flex-nowrap bg-card-bg rounded-lg gap-2 p-4 justify-center md:justify-start ">
+                <div className="flex flex-wrap md:flex-nowrap bg-transparent rounded-lg gap-2 p-4 justify-center md:justify-start ">
                     {[
                         { titulo: 'Negócios', valor: resultados[UFSelecionada]?.negocios },
                         { titulo: 'Outliers', valor: resultados[UFSelecionada]?.outliers },

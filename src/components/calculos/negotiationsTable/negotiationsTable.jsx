@@ -322,7 +322,7 @@ export const NegotiationsTable = (categoria, dataFiltro) => {
     };
 
     return (
-        <div className="flex flex-col w-full md:w-3/5 bg-card-bg rounded-lg">
+        <div className="flex flex-col w-full md:w-3/5 bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] rounded-lg">
             {update && (
                 <div className="bg-green-500 text-white p-2 rounded">
                     Dados atualizados com sucesso!

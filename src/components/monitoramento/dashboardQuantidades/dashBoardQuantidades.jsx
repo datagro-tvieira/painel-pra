@@ -105,10 +105,10 @@ const Card = ({ item }) => {
   return (
     <div
       className="
-        rounded-2xl shadow-lg
+        rounded shadow-lg
         p-3
         flex flex-col
-        bg-[#1A1F1A] text-[#F5F5DC]
+        bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] text-[#F5F5DC]
         w-xl
         mx-auto
         border border-gray-800
@@ -117,7 +117,7 @@ const Card = ({ item }) => {
       {/* Logo */}
       <div
         className="
-          bg-white rounded-xl
+          bg-white rounded
           flex items-center justify-center
           p-3 mb-3
           h-32 sm:h-36 md:h-30
@@ -185,7 +185,7 @@ export const DashboardFrigorificos = () => {
     const fetchData = async () => {
       try {
         const response = await fetch("https://pecuaria.datagro.com/backoffice-pec/api/v1/dashboard/industrias/resultados?obter=negocios");
-        if (!response.ok) throw new Error("Network response was not ok");
+        if (!response.ok) throw new Error("Erro");
 
         const rawData = await response.json();
 
@@ -230,7 +230,7 @@ export const DashboardFrigorificos = () => {
     chart.labels().fontColor("white").fontSize(14).fontWeight("bold").position("top").anchor("top").format(function() {
       return formatValorLabelChart(this.getData("value"));
     });
-    chart.background().fill("#1A1F1A");
+    chart.background().fill("transparent");
     chart.xAxis().labels().fontSize(12).fontColor("#F5F5DC").rotation(-45).hAlign("right").padding(5);
     chart.yAxis().labels().fontColor("#F5F5DC");
     chart.palette(["#FFD700"]);
@@ -241,7 +241,7 @@ export const DashboardFrigorificos = () => {
   }, [cardsData]);
 
   return (
-    <div style={{ backgroundColor: "#2A3529", minHeight: "100vh" }} className="p-4">
+    <div style={{ minHeight: "100vh" }} className="p-4 bg-primary">
       {cardsData.length > 0 && (
         <Swiper
           modules={[Autoplay]}
@@ -272,8 +272,8 @@ export const DashboardFrigorificos = () => {
         </Swiper>
       )}
 
-      <div className="rounded-xl p-4 mt-8" style={{ backgroundColor: "#1A1F1A" }}>
-        <div ref={chartRef} style={{ height: "500px", width: "100%" }} className="h-full"/>
+      <div className="rounded p-4 mt-8 bg-gradient-to-br from-[#2A3529] to-[#1A1F1A]" >
+        <div ref={chartRef} style={{ height: "500px", width: "100%" }} className="h-full "/>
       </div>
     </div>
   );

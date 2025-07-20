@@ -15,7 +15,7 @@ export const GraficoDeGauge = ({ data, options }) => {
 
       const gauge = anychart.gauges.linear();
       gauge.data(data); // `data` agora é um array de valores [valorArquivos, valorCabeças, valorTotal]
-      gauge.background().fill("transparent");
+        gauge.background().fill("transparent");
       gauge.animation(true);
 
       // Configura a lenda dinamicamente baseada nas opções dos tanks

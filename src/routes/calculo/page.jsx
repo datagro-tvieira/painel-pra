@@ -28,7 +28,7 @@ export const CalculoPage = () => {
 
         <div className="flex flex-wrap gap-6 md:flex-nowrap justify-center flex-1">
           {/* Gráfico - ocupa tudo se a tabela não estiver visível */}
-          <div className={`${showArquivos ? 'md:w-2/5' : 'w-full'} bg-card-bg rounded-lg p-2 flex items-center justify-center grow`}>
+          <div className={`${showArquivos ? 'md:w-2/5' : 'w-full'} bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] rounded p-2 flex items-center justify-center grow`}>
             <div className="w-full ">
               <ScatterChart categoria={categoria} dataFiltro={dataSelecionada} />
             </div>

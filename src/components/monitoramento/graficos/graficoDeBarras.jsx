@@ -12,7 +12,7 @@ export const GraficoDeBarras = ({ data }) => {
       if (!chartInstance.current) { // Initialize chart only once
         chartInstance.current = anychart.bar();
         chartInstance.current.background().fill("transparent");
-        chartInstance.current.labels().enabled(true).format("{%Value}").fontColor("white").fontWeight(600).fontSize(16);
+         chartInstance.current.labels().enabled(true).format("{%Value}").fontColor("white").fontWeight(600).fontSize(16);
         chartInstance.current.xAxis().labels().fontSize(18).fontColor("white").fontWeight(600);
         chartInstance.current.container(chartContainerRef.current);
         chartInstance.current.palette(["#FFD700", "#00C853"]); 

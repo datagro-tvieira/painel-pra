@@ -135,23 +135,23 @@ const DashBoardRelTime = () => {
   return (
     <div className="dashboard-container bg-background text-white min-h-full p-4">
       <div className="flex items-center justify-center mb-5">
-        <h1 className="text-2xl font-bold mb-4 text-center">Análise {new Date().toLocaleDateString('pt-BR')}</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center">Resumo diário {new Date().toLocaleDateString('pt-BR')}</h1>
       </div>
       {/* Header */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-card-bg p-4 rounded-xl shadow-md text-center">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md text-center">
           <p className="text-lg">Total de Arquivos:</p>
           <h2 className="text-3xl text-text-bold-color font-bold">{dashboardData.info.totalFiles}</h2>
         </div>
-        <div className="bg-card-bg p-4 rounded-xl shadow-md text-center">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md text-center">
           <p className="text-lg">Total de Cabeças:</p>
           <h2 className="text-3xl text-text-bold-color font-bold">{dashboardData.info.totalHeads}</h2>
         </div>
-        <div className="bg-card-bg p-4 rounded-xl shadow-md text-center">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md text-center">
           <p className="text-lg">Consultas Token:</p>
           <h2 className="text-3xl text-text-bold-color font-bold">{dashboardData.info.totalToken}</h2>
         </div>
-        <div className="bg-card-bg p-4 rounded-xl shadow-md text-center">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md text-center">
           <p className="text-lg">Valor Total:</p>
           <h2 className="text-3xl text-text-bold-color font-bold">
             R$ {parseFloat(dashboardData.info.currentValue || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
@@ -161,16 +161,15 @@ const DashBoardRelTime = () => {
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 h-full">
   {/* Swiper + Lista lado a lado */}
-  <div className="bg-card-bg p-4 rounded-xl shadow-md">
+  <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md">
     <h3 className="text-center text-xl mb-4">Últimos Arquivos {new Date().toLocaleDateString('pt-BR')}</h3>
     <div className="flex flex-col md:flex-row gap-4">
       
       {/* Swiper */}
-      <div className="w-full md:w-3/4 bg-[#1f261b] rounded-xl shadow-xl p-4">
+      <div className="w-full md:w-3/4 bg-primary rounded shadow-xl p-4">
         <Swiper
           modules={[Pagination, Autoplay]}
-          autoplay={{ delay: 800, disableOnInteraction: false }}
-          loop={true}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           spaceBetween={20}
           slidesPerView={1}
@@ -178,7 +177,7 @@ const DashBoardRelTime = () => {
         >
           {dashboardData.arquivos.map((arquivo, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-[#2b3226] rounded-2xl p-4 text-white shadow-inner">
+              <div className="bg-transparent rounded-2xl p-4 text-white shadow-inner">
                 <div className="flex flex-col gap-6">
                   <div className="flex justify-between text-2xl font-bold">
                     <span className="text-yellow-400">Cliente</span>
@@ -208,17 +207,16 @@ const DashBoardRelTime = () => {
         </Swiper>
       </div>
 
-<div className="w-full md:w-1/4 bg-[#1f261b] rounded-xl shadow-xl p-4 text-white">
+<div className="w-full md:w-1/4 bg-primary rounded shadow-xl p-4 text-white">
   <h4 className="text-center font-bold text-lg mb-3 text-yellow-400">Indústrias</h4>
 
   <Swiper
     direction="vertical"
     modules={[Autoplay]}
     autoplay={{
-      delay: 2500,
+      delay: 1000,
       disableOnInteraction: false,
     }}
-    loop={true}
     slidesPerView={2.2}
     spaceBetween={4}
     className="h-[150px]"
@@ -239,22 +237,22 @@ const DashBoardRelTime = () => {
   </div>
 
   {/* Gauge */}
-  <div className="bg-card-bg p-4 rounded-xl shadow-md flex items-center justify-center">
+  <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md flex items-center justify-center">
     <GraficoDeGauge data={gaugeChartData} options={gaugeChartOptions} />
   </div>
 </div>
 
       {/* Gráficos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-card-bg p-4 rounded-xl shadow-md">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A]   p-4 rounded shadow-md">
           <h4 className="text-center mb-2">Negócios por Frete</h4>
           <GraficoDeBarras data={barChartData} />
         </div>
-        <div className="bg-card-bg p-4 rounded-xl shadow-md">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md">
           <h4 className="text-center mb-2">Negócios por Categoria</h4>
           <GraficoDePizza data={pieChartData} />
         </div>
-        <div className="bg-card-bg p-4 rounded-xl shadow-md">
+        <div className="bg-gradient-to-br from-[#2A3529] to-[#1A1F1A] p-4 rounded shadow-md">
           <h4 className="text-center mb-2">Negócios por Estado</h4>
           <GraficoDeColunas data={columnChartData} />
         </div>

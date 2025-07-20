@@ -1,19 +1,19 @@
-import {FileChartColumnIncreasing, ChartColumn, Home, Calculator, Package, PackagePlus, Settings, ShoppingBag, LogOut, UserPlus, Monitor } from "lucide-react";
+import {FileChartColumnIncreasing, ChartColumn, Home, Calculator, Package, PackagePlus, Settings, ShoppingBag, LogOut, UserPlus, Monitor, List } from "lucide-react";
 
 // import ProfileImage from "@/assets/profile-image.jpg";
 // import 'ProductImage' from "@/assets/product-image.jpg";
 
 export const navbarLinks = [
     {
-        title: "",
+        title: "Gerencial",
         links: [
             {
-                label: "Dashboard",
+                label: "Home",
                 icon: Home,
                 path: "/",
             },
             {
-                label: "Relatorios",
+                label: "Relatórios",
                 icon: FileChartColumnIncreasing,
                 path: "/relatorios",
             },
@@ -25,13 +25,23 @@ export const navbarLinks = [
         ],
     },
     {
-        title: "Views",
+        title: "Monitoramento",
         links: [
             {
-            label: "Monitoramento",
+            label: "Display",
             icon: Monitor,
             path: "/dashboards",
             },
+            {
+            label: "Consolidado",
+            icon: ChartColumn,
+            path: "/quantidades",
+            },
+            {
+            label: "Resumo diário",
+            icon: List,
+            path: "/realtime",
+            }
         ],
     },
     {

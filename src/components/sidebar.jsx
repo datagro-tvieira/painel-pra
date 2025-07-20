@@ -2,6 +2,10 @@ import React, { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import { navbarLinks } from '@/constants';
 import { ChevronsLeft } from 'lucide-react';
+import boi from '@/assets/pins/BOI.png';
+import etanol from '@/assets/pins/ETANOL.png';
+import milho from '@/assets/pins/MILHO.png';
+import leite from '@/assets/pins/LEITE.png';
 
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
@@ -25,7 +29,31 @@ export const Sidebar = forwardRef(({ collapsed }, ref) => {
         <img src='' className='hidden dark:block'></img>
 
         {!collapsed &&
-          <p className='text-lg font-medium text-slate-900 transition-colors dark:text-slate-50'>Pecuária</p>}
+        <>          
+          <div className=' flex flex-1 items-center  overflow-x-auto'>
+            <button
+              onClick={() => setIsOpen(!isOpen)}>
+                <img src={boi} className='h-12 w-12 hover:w-20 hover:h-20' />
+              </button>
+              
+              <button
+              onClick={() => setIsOpen(!isOpen)}>
+                <img src={milho} className='w-8 h-12 hover:w-16 hover:h-20' />
+              </button>
+
+              <button
+              onClick={() => setIsOpen(!isOpen)}>
+                <img src={etanol} className='w-12 h-12 hover:w-20 hover:h-20' />
+              </button>
+
+              <button
+              onClick={() => setIsOpen(!isOpen)}>
+                <img src={leite} className='w-12 h-12 hover:w-20 hover:h-20' />
+              </button>
+          </div>
+          </>
+          }
+          
       </div>
       
       <div className='flex w-full flex-col gap-y-4 overflow-y-auto overflow-x-hidden p-3 [scrollbar-width:_thin]'>

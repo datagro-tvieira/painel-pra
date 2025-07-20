@@ -72,7 +72,7 @@ export const ScatterChart = (categoria, dataFiltro) => {
 
     const chart = anychart.scatter();
 
-    chart.background().fill('#2A3529');
+     chart.background().fill("transparent");
     chart.animation(true);
     chart.title('Dispersão de Quantidade x Valor');
     chart.title().fontColor('#ffffff');
@@ -140,7 +140,7 @@ export const ScatterChart = (categoria, dataFiltro) => {
 
   return (
     <div>
-     <div className="bg-card-bg flex flex-wrap items-center gap-4 p-1 rounded-lg ">
+     <div className="bg-transparent flex flex-wrap items-center gap-4 p-1 rounded-lg ">
         <div className="flex flex-col sm:flex-row items-center gap-2">
           <label className="text-sm text-white font-medium">Estado:</label>
           <select

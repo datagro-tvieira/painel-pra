@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ThemeProvider } from "@/contexts/theme-context";
+import { CultureProvider } from "@/contexts/culture-context";
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { config } from "./utils/config";
@@ -20,6 +21,10 @@ import { Ativos } from "./routes/telas/ativos";
 import { AuthGuard } from "@/components/authGuard";
 import { Carousel } from "./routes/telas/carousel";
 import ResumosPage from "./routes/resumos/page";
+import BoiDashboardPage from '@/pages/dashboard/boi';
+import MilhoDashboardPage from '@/pages/dashboard/milho';
+import LeiteDashboardPage from '@/pages/dashboard/leite';
+import EtanolDashboardPage from '@/pages/dashboard/etanol';
 function App() {
     const msalInstance = new PublicClientApplication(config);
 
@@ -45,6 +50,10 @@ const router = createBrowserRouter(
             { path: "distribuicao", element: <DistribuicaoPage /> },
             { path: "quantidades", element: <DashboardQts /> },
             { path: "ativos", element: <Ativos /> },
+            { path: "dashboard/boi", element: <BoiDashboardPage /> },
+            { path: "dashboard/milho", element: <MilhoDashboardPage /> },
+            { path: "dashboard/leite", element: <LeiteDashboardPage /> },
+            { path: "dashboard/etanol", element: <EtanolDashboardPage /> },
             { path: "inventory", element: <h1 className="title">Inventory</h1> },
             { path: "settings", element: <h1 className="title">Settings</h1> },
             { path: "resumos", element: <ResumosPage /> },
@@ -63,10 +72,11 @@ const router = createBrowserRouter(
 
     return (
         <MsalProvider instance={msalInstance}>
-
+        <CultureProvider>
         <ThemeProvider theme="dark">
             <RouterProvider router={router} />
         </ThemeProvider>
+        </CultureProvider>
         </MsalProvider>
     );
 }

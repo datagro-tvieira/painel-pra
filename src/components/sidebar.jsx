@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import { cn } from '@/utils/cn'
 import { navbarLinks } from '@/constants';
 import { ChevronsLeft } from 'lucide-react';
@@ -8,10 +8,12 @@ import milho from '@/assets/pins/MILHO.png';
 import leite from '@/assets/pins/LEITE.png';
 
 import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { CultureContext } from '@/contexts/culture-context';
 
 export const Sidebar = forwardRef(({ collapsed }, ref) => {
-
+  const { setCulture } = useContext(CultureContext);
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = React.useState(false);
   
   return (
@@ -32,22 +34,22 @@ export const Sidebar = forwardRef(({ collapsed }, ref) => {
         <>          
           <div className=' flex flex-1 items-center  overflow-x-auto'>
             <button
-              onClick={() => setIsOpen(!isOpen)}>
+              onClick={() => { setCulture('boi'); navigate('/dashboard/boi'); setIsOpen(!isOpen); }}>
                 <img src={boi} className='h-12 w-12 hover:w-20 hover:h-20' />
               </button>
-              
+
               <button
-              onClick={() => setIsOpen(!isOpen)}>
+              onClick={() => { setCulture('milho'); navigate('/dashboard/milho'); setIsOpen(!isOpen); }}>
                 <img src={milho} className='w-8 h-12 hover:w-16 hover:h-20' />
               </button>
 
               <button
-              onClick={() => setIsOpen(!isOpen)}>
+              onClick={() => { setCulture('etanol'); navigate('/dashboard/etanol'); setIsOpen(!isOpen); }}>
                 <img src={etanol} className='w-12 h-12 hover:w-20 hover:h-20' />
               </button>
 
               <button
-              onClick={() => setIsOpen(!isOpen)}>
+              onClick={() => { setCulture('leite'); navigate('/dashboard/leite'); setIsOpen(!isOpen); }}>
                 <img src={leite} className='w-12 h-12 hover:w-20 hover:h-20' />
               </button>
           </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Calculator, ChartPie, FileChartColumnIncreasing, FileDown, FileSpreadsheet, SquareActivity } from 'lucide-react';
+import { Calculator, ChartPie, FileChartColumnIncreasing, FileDown, FileSpreadsheet, RefreshCcw, SquareActivity } from 'lucide-react';
 import ExcelViewer from './excelViewer';
 import { DistribuicaoPage } from '../../../routes/distribuicao/page';
 import { Atom } from 'react-loading-indicators';
@@ -411,6 +411,26 @@ export const CalculationCard = ({categoria, dataFiltro}) => {
                     <span className="text-white mt-2">Último cálculo em &nbsp; {resultados[UFSelecionada]?.datahora}</span>
 
                     <div className='flex items-center space-x-1 bg-button-hover-bg rounded-md p-1'>
+                        <button title='Atualizar' onClick={async () => {
+
+                            setSimulacao([]);
+                            setMensagemCalculo(false);
+                            setLoading(true);
+
+                            const response = await fetch(
+                                `https://pecuaria.datagro.com/backoffice-pec/api/v1/dashboard/calcular?obter=calcular&outlier=${outlier === true ? 1 : 0}&uf=${UFSelecionada}&resumo=0`,
+                                { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+                            
+                            if (!response.ok) setErro(true);
+                            setLoading(false);
+                            setMensagemPersistir(true);
+                            await fetchData(categoria, dataFiltro);
+                        }}>
+                        <RefreshCcw className='text-black hover:text-gray-600'/>
+                        </button>
+                    </div>
+
+                    <div className='flex items-center space-x-1 bg-button-hover-bg rounded-md p-1'>
 
                         <button title='calcular' onClick={calcularModal}>
                             <Calculator className='text-black hover:text-gray-600' />
@@ -434,7 +454,12 @@ export const CalculationCard = ({categoria, dataFiltro}) => {
                         </button>
                     </div>
                 </div>
-
+                
+                {loading ? (
+                    <div className="flex justify-center items-center mb-4">
+                        <Atom color="#FFD700" size="medium" text="Atualizando..." textColor="" />
+                    </div>
+                ) :(
                 <div className="flex flex-wrap md:flex-nowrap bg-transparent rounded-lg gap-2 p-4 justify-center md:justify-start ">
                     {[
                         { titulo: 'Negócios', valor: resultados[UFSelecionada]?.negocios },
@@ -511,7 +536,7 @@ export const CalculationCard = ({categoria, dataFiltro}) => {
                     </div>
 
                 </div>
-
+                )}
             </div>
 
         </>

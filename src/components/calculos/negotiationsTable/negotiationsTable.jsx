@@ -61,10 +61,10 @@ export const NegotiationsTable = (categoria, dataFiltro) => {
 
             const response = await fetch(
                 `https://pecuaria.datagro.com/backoffice-pec/api/v1/dashboard/negocios?acao=buscarPorId&id=${id}&completo=0`,
-                {
+                    {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
-                }
+                    }
             );
 
             if (!response.ok) {
@@ -101,18 +101,31 @@ export const NegotiationsTable = (categoria, dataFiltro) => {
 
 
     useEffect(() => {
-        const handleAlertInfoClick = (event) => {
+        const handleAlertInfoClick = async (event) => {
             const { id, origem, destino, ufOrigem, ufDestino, log } = event.detail;
 
-            setFilters((prev) => ({
-                ...prev,
-                id,
-                origem,
-                destino,
-                ufOrigem,
-                ufDestino,
-                log,
-            }));
+            const response = await fetch(
+                `https://pecuaria.datagro.com/backoffice-pec/api/v1/dashboard/negocios?acao=buscarPorId&id=${id}&completo=0`,
+                {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                }
+            );
+            
+            const result = await response.json();
+            const negocioData = result.resultado;
+            console.log(negocioData);
+            setData([negocioData]);
+
+            // setFilters((prev) => ({
+            //     ...prev,
+            //     id,
+            //     origem,
+            //     destino,
+            //     ufOrigem,
+            //     ufDestino,
+            //     log,
+            // }));
         };
 
         window.addEventListener('alertInfoClick', handleAlertInfoClick);

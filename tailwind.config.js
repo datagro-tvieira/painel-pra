@@ -16,6 +16,21 @@ export default {
         'button-bg': '#394B74',
         'button-hover-bg': '#FFD700',
         'labels': '#F5F5DC',
+        milho: {
+          primary: '#FFD700',
+          secondary: '#FFA500',
+          accent: '#228B22',
+        },
+        leite: {
+          primary: '#ADD8E6',
+          secondary: '#FFFFFF',
+          accent: '#228B22',
+        },
+        etanol: {
+          primary: '#1A1F1A',
+          secondary: '#FFFFFF',
+          accent: '#228B22',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
